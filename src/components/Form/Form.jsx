@@ -60,12 +60,12 @@ export default function ContactsForm() {
       {({ isSubmitting }) => (
         <FormStyled>
           <FieldWrapper>
-            <Label htmlFor="name">Name</Label>
+            <Label htmlFor="name">Name: </Label>
             <Field id="name" name="name" placeholder="Jane" />
             <ErrorMessageStyled component="div" name="name" />
           </FieldWrapper>
           <FieldWrapper>
-            <Label htmlFor="phone">Phone</Label>
+            <Label htmlFor="phone">Phone: </Label>
             <Field id="phone" name="phone" placeholder="123-45-67" />
             <ErrorMessageStyled component="div" name="phone" />
           </FieldWrapper>

@@ -15,7 +15,7 @@ export default function App() {
   }, [dispatch]);
 
   return (
-    <div>
+    <>
       <Title>Phonebook</Title>
 
       <Form />
@@ -32,6 +32,6 @@ export default function App() {
       {contacts.length > 0 && (
         <MemoizedContactList />
       )}
-    </div>
+    </>
   );
 }

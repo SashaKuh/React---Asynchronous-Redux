@@ -6,7 +6,7 @@ import { deleteContact } from 'redux/operations';
 
 import { ContactListStyled, ListElement, Btn } from './ContactsList.styled';
 
-const MemoizedContactList = React.memo(() => {
+const MemoizedContactList = React.memo(({ contacts }) => {
   const { dispatch } = useContactActions();
   const contactsRedux = useSelector(selectContacts);
   const filterValue = useSelector(selectFilter);
@@ -17,19 +17,21 @@ const MemoizedContactList = React.memo(() => {
     );
   }, [contactsRedux, filterValue]);
 
+  const handleDelete = (id) => dispatch(deleteContact(id));
+
   return (
     <>
       <ContactListStyled>
-      {filteredContacts.map(({ name, phone, id }) => {
-        return (
-          <ListElement key={id}>
-            {name} - {phone}
-            <Btn type="button" onClick={() => dispatch(deleteContact(id))}>
-              Delete
-            </Btn>
-          </ListElement>
-        );
-      })}
+        {filteredContacts.map(({ name, phone, id }) => {
+          return (
+            <ListElement key={id}>
+              {name} - {phone}
+              <Btn type="button" onClick={() => handleDelete(id)}>
+                Delete
+              </Btn>
+            </ListElement>
+          );
+        })}
       </ContactListStyled>
     </>
   );

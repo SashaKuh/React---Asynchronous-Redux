@@ -29,19 +29,20 @@ export const contactsSlice = createSlice({
       .addCase(fetchContacts.rejected, handleRejected)
       .addCase(addContact.pending, handlePending)
       .addCase(addContact.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        const { name, phone } = action.payload;
+  state.isLoading = false;
+  state.error = null;
+  const { name, phone } = action.payload;
 
-        const date = new Date();
+  const date = new Date();
 
-        state.items.unshift({
-          name,
-          phone,
-          CreatedAt: date.toJSON(),
-          id: nanoid(6),
-        });
-      })
+  state.items.push({
+    name,
+    phone,
+    CreatedAt: date.toJSON(),
+    id: nanoid(6),
+  });
+})
+
       .addCase(addContact.rejected, handleRejected)
       .addCase(deleteContact.pending, handlePending)
       .addCase(deleteContact.fulfilled, (state, action) => {
